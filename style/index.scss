@@ -1,0 +1,285 @@
+
+.restaurant {
+  max-width: 750px;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../image/bg.jpg");
+  background-size: 75rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #c6dcbf;
+  position: relative;
+  * {
+    box-sizing: border-box;
+  }
+  @mixin linear-gradientTwo($color1, $color2, $direction: top) {
+    background: linear-gradient(
+      to $direction,
+      $color1 0%,
+      $color1 50%,
+      $color2 50%,
+      $color2 100%
+    );
+  }
+  .restaurant-top {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+    color: #8c6900;
+    .top-box {
+      border: 1.3rem solid #8c6900;
+      height: 6.4rem;
+      border-radius: 3.2rem;
+      display: flex;
+      align-items: center;
+      line-height: 1em;
+      font-size: 2.4rem;
+      @include linear-gradientTwo(#ffe699, #ffd24d);
+    }
+    .time {
+      @extend .top-box;
+      width: 33rem;
+      justify-content: space-evenly;
+    }
+    .setting {
+      width: 6.4rem;
+      width: 6.4rem;
+    }
+    .money {
+      @extend .top-box;
+      width: 31rem;
+      padding-right: 3rem;
+      justify-content: flex-end;
+    }
+  }
+  .head-img {
+    width: 13.4rem;
+    height: 13.4rem;
+    border-radius: 6.5rem;
+    border: 1.3rem solid #fff;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .restaurant-cook {
+    height: 45rem;
+    .cooks {
+      margin: 0 auto;
+      background-color: #ffd24d;
+      border: 1.3rem solid #fff;
+      border-radius: 4rem;
+      width: 70rem;
+      display: flex;
+      flex-wrap: wrap;
+      padding: 3.5rem 3.5rem 0;
+      .cook-box {
+        position: relative;
+        margin-bottom: 3.5rem;
+        &:not(:nth-child(3n)) {
+          margin-right: 10.1rem;
+        }
+        .cook {
+          @extend .head-img;
+          &.default {
+            @include linear-gradientTwo(#aaa, #ddd, left);
+          }
+          &.work {
+            @include linear-gradientTwo(#ff9122, #d96d00, right);
+          }
+          &.finish {
+            @include linear-gradientTwo(#ac91ff, #7a4dff, right);
+            .cook-finish {
+              position: absolute;
+              left: -2rem;
+              top: 3.5rem;
+              width: 10rem;
+              height: 10rem;
+            }
+          }
+          &.empty {
+            background-color: #ddd;
+            position: relative;
+            &::before {
+              position: absolute;
+              content: "";
+              width: 6rem;
+              height: 1rem;
+              left: 2.4rem;
+              top: 4.9rem;
+              background-color: #cc9979;
+              z-index: 1;
+            }
+            &::after {
+              position: absolute;
+              content: "";
+              width: 1rem;
+              height: 6rem;
+              left: 4.9rem;
+              top: 2.4rem;
+              background-color: #cc9979;
+              z-index: 1;
+            }
+            img {
+              filter: brightness(0) invert(1);
+            }
+          }
+        }
+        .cook-dishes-progress {
+          position: absolute;
+          bottom: -2rem;
+          width: 14rem;
+          border-radius: 0.5rem;
+          border: 0.5rem solid #fff;
+          height: 4rem;
+          font-size: 2.4rem;
+          line-height: 3rem;
+          color: #fff;
+          text-align: center;
+        }
+        .cook-delete {
+          position: absolute;
+          transform: rotate(45deg);
+          width: 6rem;
+          height: 6rem;
+          left: 10rem;
+          top: -1rem;
+          &::before {
+            position: absolute;
+            content: "";
+            width: 6rem;
+            height: 1rem;
+            left: 0;
+            top: 2.5rem;
+            background-color: #cc9979;
+            z-index: 1;
+          }
+          &::after {
+            position: absolute;
+            content: "";
+            width: 1rem;
+            height: 6rem;
+            left: 2.5rem;
+            top: 0;
+            background-color: #cc9979;
+            z-index: 1;
+          }
+        }
+      }
+    }
+  }
+  .restaurant-seat {
+    height: 45rem;
+    margin: 0 auto;
+    background-color: #ffd24d;
+    border: 1.3rem solid #fff;
+    border-radius: 4rem;
+    width: 70rem;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 3.5rem;
+    .seat-box {
+      width: 50%;
+      padding-left: 5rem;
+      margin-bottom: 1rem;
+      position: relative;
+      .seat {
+        @extend .head-img;
+        &.empty {
+          @include linear-gradientTwo(#aaa, #ddd, left);
+        }
+        &.wait {
+          @include linear-gradientTwo(#ff2626, #b20000, right);
+        }
+        &.eat {
+          @include linear-gradientTwo(#ff9122, #d96d00, right);
+        }
+        &.pay {
+          @include linear-gradientTwo(#80ff00, #00b200, right);
+        }
+        &.cancel {
+          @include linear-gradientTwo(#661a00, #401000, right);
+        }
+      }
+      .seat-dishes {
+        position: absolute;
+        top: 0;
+        left: 15rem;
+        .seat-dishes-progress {
+          width: 14rem;
+          border-radius: 0.5rem;
+          border: 0.5rem solid #fff;
+          height: 4rem;
+          font-size: 2.4rem;
+          line-height: 3rem;
+          color: #fff;
+          text-align: center;
+          &.seat-dishes-wait {
+            position: relative;
+            z-index: 9;
+            .seat-wait-finish {
+              position: absolute;
+              top: -0.5rem;
+              right: -4.5rem;
+              width: 4rem;
+              height: 4rem;
+              border-radius: 50%;
+              border: 0.5rem solid #fff;
+              @include linear-gradientTwo(#ff2626, #b20000, right);
+              z-index: 10;
+              img {
+                width: 5rem;
+                height: 5rem;
+                transform: translate(-1rem, -1rem);
+              }
+            }
+          }
+          &.seat-dishes-cancel {
+            text-decoration: line-through;
+          }
+          &:not(:last-child) {
+            margin-bottom: 0.3rem;
+          }
+        }
+      }
+      .seat-appease,
+      .seat-pay-icon {
+        position: absolute;
+        width: 8rem;
+        height: 8rem;
+        top: 7rem;
+        left: 3rem;
+      }
+    }
+  }
+  .restaurant-queue {
+    position: absolute;
+    bottom: 4rem;
+    right: 3rem;
+    display: flex;
+    justify-content: flex-end;
+    .queue-box {
+      position: relative;
+      &:not(:first-child) {
+        margin-left: -3rem;
+      }
+      .queue {
+        @extend .head-img;
+        @include linear-gradientTwo(#2693ff, #006dd9, right);
+      }
+      .wait-progress {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        border-radius: 0.5rem;
+        border: 0.5rem solid #fff;
+        height: 4rem;
+        bottom: -2rem;
+        font-size: 2.4rem;
+        line-height: 3rem;
+        color: #fff;
+        text-align: center;
+      }
+    }
+  }
+}

@@ -1,0 +1,310 @@
+.restaurant {
+  max-width: 750px;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../image/bg.jpg");
+  background-size: 75rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #c6dcbf;
+  position: relative;
+}
+
+.restaurant * {
+  box-sizing: border-box;
+}
+
+.restaurant .restaurant-top {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem;
+  color: #8c6900;
+}
+
+.restaurant .restaurant-top .top-box, .restaurant .restaurant-top .time, .restaurant .restaurant-top .money {
+  border: 1.3rem solid #8c6900;
+  height: 6.4rem;
+  border-radius: 3.2rem;
+  display: flex;
+  align-items: center;
+  line-height: 1em;
+  font-size: 2.4rem;
+  background: linear-gradient(to top, #ffe699 0%, #ffe699 50%, #ffd24d 50%, #ffd24d 100%);
+}
+
+.restaurant .restaurant-top .time {
+  width: 33rem;
+  justify-content: space-evenly;
+}
+
+.restaurant .restaurant-top .setting {
+  width: 6.4rem;
+  width: 6.4rem;
+}
+
+.restaurant .restaurant-top .money {
+  width: 31rem;
+  padding-right: 3rem;
+  justify-content: flex-end;
+}
+
+.restaurant .head-img, .restaurant .restaurant-cook .cooks .cook-box .cook, .restaurant .restaurant-seat .seat-box .seat, .restaurant .restaurant-queue .queue-box .queue {
+  width: 13.4rem;
+  height: 13.4rem;
+  border-radius: 6.5rem;
+  border: 1.3rem solid #fff;
+}
+
+.restaurant .head-img img, .restaurant .restaurant-cook .cooks .cook-box .cook img, .restaurant .restaurant-seat .seat-box .seat img, .restaurant .restaurant-queue .queue-box .queue img {
+  width: 100%;
+  height: 100%;
+}
+
+.restaurant .restaurant-cook {
+  height: 45rem;
+}
+
+.restaurant .restaurant-cook .cooks {
+  margin: 0 auto;
+  background-color: #ffd24d;
+  border: 1.3rem solid #fff;
+  border-radius: 4rem;
+  width: 70rem;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 3.5rem 3.5rem 0;
+}
+
+.restaurant .restaurant-cook .cooks .cook-box {
+  position: relative;
+  margin-bottom: 3.5rem;
+}
+
+.restaurant .restaurant-cook .cooks .cook-box:not(:nth-child(3n)) {
+  margin-right: 10.1rem;
+}
+
+.restaurant .restaurant-cook .cooks .cook-box .cook.default {
+  background: linear-gradient(to left, #aaa 0%, #aaa 50%, #ddd 50%, #ddd 100%);
+}
+
+.restaurant .restaurant-cook .cooks .cook-box .cook.work {
+  background: linear-gradient(to right, #ff9122 0%, #ff9122 50%, #d96d00 50%, #d96d00 100%);
+}
+
+.restaurant .restaurant-cook .cooks .cook-box .cook.finish {
+  background: linear-gradient(to right, #ac91ff 0%, #ac91ff 50%, #7a4dff 50%, #7a4dff 100%);
+}
+
+.restaurant .restaurant-cook .cooks .cook-box .cook.finish .cook-finish {
+  position: absolute;
+  left: -2rem;
+  top: 3.5rem;
+  width: 10rem;
+  height: 10rem;
+}
+
+.restaurant .restaurant-cook .cooks .cook-box .cook.empty {
+  background-color: #ddd;
+  position: relative;
+}
+
+.restaurant .restaurant-cook .cooks .cook-box .cook.empty::before {
+  position: absolute;
+  content: "";
+  width: 6rem;
+  height: 1rem;
+  left: 2.4rem;
+  top: 4.9rem;
+  background-color: #cc9979;
+  z-index: 1;
+}
+
+.restaurant .restaurant-cook .cooks .cook-box .cook.empty::after {
+  position: absolute;
+  content: "";
+  width: 1rem;
+  height: 6rem;
+  left: 4.9rem;
+  top: 2.4rem;
+  background-color: #cc9979;
+  z-index: 1;
+}
+
+.restaurant .restaurant-cook .cooks .cook-box .cook.empty img {
+  filter: brightness(0) invert(1);
+}
+
+.restaurant .restaurant-cook .cooks .cook-box .cook-dishes-progress {
+  position: absolute;
+  bottom: -2rem;
+  width: 14rem;
+  border-radius: 0.5rem;
+  border: 0.5rem solid #fff;
+  height: 4rem;
+  font-size: 2.4rem;
+  line-height: 3rem;
+  color: #fff;
+  text-align: center;
+}
+
+.restaurant .restaurant-cook .cooks .cook-box .cook-delete {
+  position: absolute;
+  transform: rotate(45deg);
+  width: 6rem;
+  height: 6rem;
+  left: 10rem;
+  top: -1rem;
+}
+
+.restaurant .restaurant-cook .cooks .cook-box .cook-delete::before {
+  position: absolute;
+  content: "";
+  width: 6rem;
+  height: 1rem;
+  left: 0;
+  top: 2.5rem;
+  background-color: #cc9979;
+  z-index: 1;
+}
+
+.restaurant .restaurant-cook .cooks .cook-box .cook-delete::after {
+  position: absolute;
+  content: "";
+  width: 1rem;
+  height: 6rem;
+  left: 2.5rem;
+  top: 0;
+  background-color: #cc9979;
+  z-index: 1;
+}
+
+.restaurant .restaurant-seat {
+  height: 45rem;
+  margin: 0 auto;
+  background-color: #ffd24d;
+  border: 1.3rem solid #fff;
+  border-radius: 4rem;
+  width: 70rem;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 3.5rem;
+}
+
+.restaurant .restaurant-seat .seat-box {
+  width: 50%;
+  padding-left: 5rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.restaurant .restaurant-seat .seat-box .seat.empty {
+  background: linear-gradient(to left, #aaa 0%, #aaa 50%, #ddd 50%, #ddd 100%);
+}
+
+.restaurant .restaurant-seat .seat-box .seat.wait {
+  background: linear-gradient(to right, #ff2626 0%, #ff2626 50%, #b20000 50%, #b20000 100%);
+}
+
+.restaurant .restaurant-seat .seat-box .seat.eat {
+  background: linear-gradient(to right, #ff9122 0%, #ff9122 50%, #d96d00 50%, #d96d00 100%);
+}
+
+.restaurant .restaurant-seat .seat-box .seat.pay {
+  background: linear-gradient(to right, #80ff00 0%, #80ff00 50%, #00b200 50%, #00b200 100%);
+}
+
+.restaurant .restaurant-seat .seat-box .seat.cancel {
+  background: linear-gradient(to right, #661a00 0%, #661a00 50%, #401000 50%, #401000 100%);
+}
+
+.restaurant .restaurant-seat .seat-box .seat-dishes {
+  position: absolute;
+  top: 0;
+  left: 15rem;
+}
+
+.restaurant .restaurant-seat .seat-box .seat-dishes .seat-dishes-progress {
+  width: 14rem;
+  border-radius: 0.5rem;
+  border: 0.5rem solid #fff;
+  height: 4rem;
+  font-size: 2.4rem;
+  line-height: 3rem;
+  color: #fff;
+  text-align: center;
+}
+
+.restaurant .restaurant-seat .seat-box .seat-dishes .seat-dishes-progress.seat-dishes-wait {
+  position: relative;
+  z-index: 9;
+}
+
+.restaurant .restaurant-seat .seat-box .seat-dishes .seat-dishes-progress.seat-dishes-wait .seat-wait-finish {
+  position: absolute;
+  top: -0.5rem;
+  right: -4.5rem;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  border: 0.5rem solid #fff;
+  background: linear-gradient(to right, #ff2626 0%, #ff2626 50%, #b20000 50%, #b20000 100%);
+  z-index: 10;
+}
+
+.restaurant .restaurant-seat .seat-box .seat-dishes .seat-dishes-progress.seat-dishes-wait .seat-wait-finish img {
+  width: 5rem;
+  height: 5rem;
+  transform: translate(-1rem, -1rem);
+}
+
+.restaurant .restaurant-seat .seat-box .seat-dishes .seat-dishes-progress.seat-dishes-cancel {
+  text-decoration: line-through;
+}
+
+.restaurant .restaurant-seat .seat-box .seat-dishes .seat-dishes-progress:not(:last-child) {
+  margin-bottom: 0.3rem;
+}
+
+.restaurant .restaurant-seat .seat-box .seat-appease,
+.restaurant .restaurant-seat .seat-box .seat-pay-icon {
+  position: absolute;
+  width: 8rem;
+  height: 8rem;
+  top: 7rem;
+  left: 3rem;
+}
+
+.restaurant .restaurant-queue {
+  position: absolute;
+  bottom: 4rem;
+  right: 3rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.restaurant .restaurant-queue .queue-box {
+  position: relative;
+}
+
+.restaurant .restaurant-queue .queue-box:not(:first-child) {
+  margin-left: -3rem;
+}
+
+.restaurant .restaurant-queue .queue-box .queue {
+  background: linear-gradient(to right, #2693ff 0%, #2693ff 50%, #006dd9 50%, #006dd9 100%);
+}
+
+.restaurant .restaurant-queue .queue-box .wait-progress {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  border-radius: 0.5rem;
+  border: 0.5rem solid #fff;
+  height: 4rem;
+  bottom: -2rem;
+  font-size: 2.4rem;
+  line-height: 3rem;
+  color: #fff;
+  text-align: center;
+}

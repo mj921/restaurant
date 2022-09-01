@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./style/index.min.css">
+</head>
+<body>
+  <div class="restaurant">
+    <div class="restaurant-top" id="restaurantTop">
+      <div class="time">
+        <span>W {{ weed }}</span>
+        <span>D {{ day }}</span>
+        <span>H {{ time }}</span>
+      </div>
+      <img
+        class="setting"
+        src="./image/setting-icon.png"
+        id="setting"
+        @click="setting"
+      />
+      <div class="money">
+        {{ money }}
+      </div>
+    </div>
+    <div class="restaurant-cook">
+      <div class="cooks">
+        <dl
+          class="cook-box"
+          v-for="(cook, cookIndex) in cookList"
+          :key="`cook-${cookIndex}`"
+          @click="cookClickHandler(cook, cookIndex)"
+        >
+          <div :class="`cook ${cook.status}`" v-if="cook.hasCook">
+            <img src="./image/cook-icon.png" alt="" />
+            <img
+              class="cook-finish"
+              v-if="cook.status === 'finish'"
+              src="./image/get-icon.png"
+              alt=""
+            />
+          </div>
+          <div class="cook empty" v-else>
+            <img src="./image/cook-icon.png" alt="" />
+          </div>
+          <div
+            v-if="cook.hasCook && cook.status !== 'default'"
+            :key="`cook-dishes-${cookIndex}-${cook.dish.name}`"
+            class="cook-dishes-progress"
+            :style="{
+              background:
+                cook.status === 'work'
+                  ? `linear-gradient(to right, #ff9122 0%, #ff9122 ${
+                      (cook.dish.cookTime / cook.dish.maxCookTime) * 100
+                    }%, #d96d00 ${
+                      (cook.dish.cookTime / cook.dish.maxCookTime) * 100
+                    }%, #d96d00 100%)`
+                  : '#ac91ff',
+            }"
+          >
+            {{ cook.dish.name }}
+          </div>
+          <div
+            class="cook-delete"
+            @click="fireCook(cook, cookIndex)"
+            v-show="
+              cook.hasCook && cook.status === 'default' && cookList.length > 2
+            "
+          ></div>
+        </dl>
+      </div>
+    </div>
+    <div class="restaurant-seat">
+      <dl
+        class="seat-box"
+        v-for="(seat, seatIndex) in seatList"
+        :key="`seat-${seatIndex}`"
+        @click="seatClickHandler(seat)"
+      >
+        <div :class="`seat ${seat.status}`">
+          <img v-if="seat.hasCustomer" :src="seat.customer.headImg" />
+        </div>
+        <div class="seat-dishes" v-if="seat.customer">
+          <div
+            v-for="dish in seat.customer.dishes"
+            :key="`seat-dishes-${seat.customer.id}-${dish.name}`"
+            class="seat-dishes-progress"
+            :class="`seat-dishes-${dish.status}`"
+            :style="{
+              background:
+                dish.status === 'wait'
+                  ? `linear-gradient(to right, #ff2626 0%, #ff2626 ${
+                      (dish.waitTime / dish.maxWaitTime) * 100
+                    }%, #b20000 ${
+                      (dish.waitTime / dish.maxWaitTime) * 100
+                    }%, #b20000 100%)`
+                  : dish.status === 'eat'
+                  ? seat.status === 'pay'
+                    ? '#00b200'
+                    : `linear-gradient(to right, #ff9122 0%, #ff9122 ${
+                        (dish.eatTime / dish.maxEatTime) * 100
+                      }%, #d96d00 ${
+                        (dish.eatTime / dish.maxEatTime) * 100
+                      }%, #d96d00 100%)`
+                  : '#535362',
+            }"
+          >
+            {{ dish.name }}
+            <div
+              class="seat-wait-finish"
+              v-if="dish.cookFinish && dish.status === 'wait'"
+              @click="serveDish(seat, dish)"
+            >
+              <img src="./image/get-icon.png" alt="" />
+            </div>
+          </div>
+        </div>
+        <img
+          v-show="seat.status === 'cancel'"
+          class="seat-appease"
+          src="./image/heart-icon.png"
+        />
+        <img
+          v-show="seat.status === 'pay'"
+          class="seat-pay-icon"
+          src="./image/money-icon.png"
+        />
+      </dl>
+    </div>
+    <div class="restaurant-queue">
+      <dl
+        class="queue-box"
+        v-for="(queue, queueIndex) in queueList"
+        :key="`queue-${queueIndex}`"
+        :style="{ zIndex: queueList.length + 1 - queueIndex }"
+        @click.stop="selectMenuHandle(queue)"
+      >
+        <div class="queue">
+          <img :src="queue.img" />
+        </div>
+        <div
+          class="wait-progress"
+          :style="{
+            background: `linear-gradient(to right, #2693ff 0%, #2693ff ${
+              (queue.queueWatiTime / queueWatiTime) * 100
+            }%, #006dd9 ${
+              (queue.queueWatiTime / queueWatiTime) * 100
+            }%, #006dd9 100%)`,
+          }"
+        >
+          等位中
+        </div>
+      </dl>
+    </div>
+  <script src="./js/rem.js"></script>
+  <script src="./js//domCompile.js"></script>
+  <script src="./js/index.js"></script>
+</body>
+</html>
